@@ -52,26 +52,3 @@ Seluruh deliverable saling terhubung melalui **Deliverables Suite Bar** di bagia
 | **[B]** | **Portfolio Template** | `templates.html` | **6 Reusable Page Templates** (*01 About Me*, *02 Skills & Tools*, *03 Project Showcase*, *04 Project Case Study*, *05 Experience & Education*, *06 Contact Information*) dengan fitur toggle *Sanga Mandala Grid Overlay*. |
 | **[C]** | **Digital Infographic** | `infographic.html` | Poster infografis berjudul **"From Information Systems to Creative Digital Solutions"** yang memvisualisasikan hubungan *Information Systems*, *Visual Communication*, *Digital Automation*, dan *Creative Problem Solving*. |
 | **[D]** | **Personal Portfolio Website** | `index.html` | Website portofolio lengkap dan responsif dengan bagian Hero, About Me, Skills & Tools (jujur & terstruktur), Selected Projects, Interactive Case Studies, Visual Identity, dan Contact. |
-
----
-
-## 3. Aset Vektor SVG (Bisa Dibuka di Adobe Illustrator)
-
-Semua ornamen budaya dibuat menggunakan kode SVG murni (bukan gambar AI-generated) dan tersimpan di folder `assets/svg/`:
-- `assets/svg/candi-mandala-emblem.svg` — Emblem arsitektural *Candi Bentar & Sanga Mandala*.
-- `assets/svg/patra-ornament.svg` — Pembatas seksi (*divider*) geometris *Patra Punggel & Padma*.
-- `assets/svg/infographic-synthesis.svg` — Diagram konvergensi untuk Digital Infographic.
-
-> **Tips Adobe Illustrator:** Kamu bisa langsung klik **File → Open** di Adobe Illustrator pada file `.svg` di atas jika ingin mengedit garis vektornya atau memasukkannya ke artboard Illustrator.
-
----
-
-## 4. Cara Export ke PDF & Deploy ke GitHub Pages
-
-1. **Membuka di Browser:** Klik dua kali `index.html` (atau jalankan Live Server di VS Code).
-2. **Export Cover / Templates / Infographic ke PDF:**
-   - Buka `cover.html`, `templates.html`, atau `infographic.html`.
-   - Klik tombol **"Print / Save as PDF"** di kanan atas (atau tekan `Ctrl + P`), lalu pilih **Save as PDF** dan centang **Background graphics**.
-3. **Hosting Gratis di GitHub Pages:**
-   - Upload seluruh isi folder ini ke repository GitHub kamu.
-   - Buka **Settings → Pages → Deploy from a branch (`main`)**. Karena menggunakan arsitektur HTML/CSS/JS statis murni tanpa *build step*, website langsung aktif!
