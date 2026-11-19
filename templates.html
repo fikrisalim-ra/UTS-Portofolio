@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deliverable B: 6 Reusable Portfolio Page Templates — Fikri</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <style>
+    .templates-stage {
+      padding: 40px 0 88px;
+    }
+
+    .templates-control-bar {
+      background-color: var(--bg-ivory-elevated);
+      border: 1px solid var(--border-hairline);
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .templates-control-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .template-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .filter-pill {
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      background-color: var(--bg-ivory);
+      border: 1px solid var(--border-hairline);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .filter-pill:hover {
+      border-color: var(--accent-terracotta);
+      color: var(--ink-charcoal);
+    }
+
+    .filter-pill.active {
+      background-color: var(--ink-charcoal);
+      color: var(--bg-ivory);
+      border-color: var(--ink-charcoal);
+    }
+
+    /* REUSABLE PORTFOLIO PAGE SHEET (Consistent Master Template Architecture) */
+    .template-sheet {
+      background-color: var(--bg-ivory-elevated);
+      border: 2px solid var(--ink-charcoal);
+      padding: 18px;
+      margin-bottom: 48px;
+      box-shadow: 0 20px 50px -20px rgba(37, 37, 37, 0.12);
+      position: relative;
+    }
+
+    .template-master-frame {
+      border: 1px solid var(--neutral-warm-gray);
+      background-color: var(--bg-ivory);
+      padding: 32px 38px;
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Optional Toggleable 12-Column Editorial Grid Overlay */
+    body.show-editorial-grid .template-master-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        to right,
+        rgba(166, 93, 67, 0.07) 0,
+        rgba(166, 93, 67, 0.07) calc(8.333% - 12px),
+        transparent calc(8.333% - 12px),
+        transparent 8.333%
+      );
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Consistent Running Header (UTAMA) */
+    .tpl-running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--ink-charcoal);
+      margin-bottom: 28px;
+    }
+
+    .tpl-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tpl-badge-num {
+      background-color: var(--ink-charcoal);
+      color: var(--bg-ivory);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      font-weight: 500;
+    }
+
+    /* Consistent Running Footer (NISTA) */
+    .tpl-running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-hairline);
+      margin-top: 28px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+    }
+
+    /* Reusable 12-Column Inner Content Grid (MADYA) */
+    .tpl-grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .tpl-module-box {
+      background-color: var(--bg-ivory-elevated);
+      border: 1px solid var(--border-hairline);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tpl-module-box.accent-border {
+      border-top: 3px solid var(--accent-terracotta);
+    }
+
+    .tpl-module-box.gold-border {
+      border-top: 3px solid var(--accent-gold);
+    }
+
+    .tpl-module-box.dark-box {
+      background-color: var(--ink-charcoal);
+      color: var(--bg-ivory);
+      border-color: var(--ink-charcoal);
+    }
+
+    @media (max-width: 920px) {
+      .col-4, .col-5, .col-6, .col-7, .col-8 {
+        grid-column: span 12;
+      }
+      .template-master-frame {
+        padding: 22px;
+      }
+    }
+
+    @media print {
+      .templates-stage { padding: 0; }
+      .template-sheet {
+        box-shadow: none;
+        page-break-after: always;
+        margin-bottom: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL DELIVERABLES SUITE BAR -->
+  <div class="suite-topbar">
+    <div class="suite-topbar-inner">
+      <div class="suite-brand">
+        <span>◆</span>
+        <strong>FIKRI // PORTFOLIO SUITE</strong>
+        <span>— Deliverable B: 6 Reusable Portfolio Templates</span>
+      </div>
+      <nav class="suite-deliverables-nav" aria-label="Portfolio Deliverables Navigation">
+        <a href="cover.html" class="suite-pill">
+          <span class="code">[A]</span> Portfolio Cover
+        </a>
+        <a href="templates.html" class="suite-pill active">
+          <span class="code">[B]</span> 6 Page Templates
+        </a>
+        <a href="infographic.html" class="suite-pill">
+          <span class="code">[C]</span> Digital Infographic
+        </a>
+        <a href="index.html" class="suite-pill">
+          <span class="code">[D]</span> Portfolio Website
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="templates-stage">
+    <div class="container">
+
+      <!-- INTERACTIVE TEMPLATE CONTROLLER BAR -->
+      <div class="templates-control-bar no-print">
+        <div class="templates-control-top">
+          <div>
+            <span class="eyebrow">Deliverable B // Portfolio Template System</span>
+            <h1 class="heading-card" style="margin-top: 4px;">6 Reusable Editorial Layout Templates</h1>
+            <p class="text-body" style="font-size: 0.88rem; margin-top: 2px;">
+              Built on a shared 12-column <em>Sanga Mandala</em> grid with consistent running headers, typography, Kamasan color tokens, and Patra corner geometry.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button id="toggle-grid-overlay" class="btn btn-subtle">Show Sanga Mandala Grid</button>
+            <button onclick="window.print()" class="btn btn-primary">Print / Save All 6 Templates to PDF</button>
+          </div>
+        </div>
+
+        <div class="template-filter-bar" role="toolbar" aria-label="Filter Templates">
+          <button class="filter-pill active" data-template-filter="all">Show All (6 Templates)</button>
+          <button class="filter-pill" data-template-filter="tpl-01">01. About Me</button>
+          <button class="filter-pill" data-template-filter="tpl-02">02. Skills &amp; Tools</button>
+          <button class="filter-pill" data-template-filter="tpl-03">03. Project Showcase</button>
+          <button class="filter-pill" data-template-filter="tpl-04">04. Project Case Study</button>
+          <button class="filter-pill" data-template-filter="tpl-05">05. Experience &amp; Education</button>
+          <button class="filter-pill" data-template-filter="tpl-06">06. Contact Information</button>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TEMPLATE 01: ABOUT ME
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-01">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 01 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: ABOUT ME</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">FIKRI // PERSONAL DIGITAL PORTFOLIO</div>
+          </header>
+
+          <div class="tpl-grid-12">
+            <!-- Left 5 Columns: Owner Profile & Academic Block -->
+            <div class="col-5 tpl-module-box accent-border">
+              <div>
+                <span class="eyebrow">Owner Profile</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; line-height: 1.05; margin: 10px 0 6px;" data-bind-text="profile.name">Fikri</h2>
+                <div style="font-family: var(--font-serif); font-style: italic; font-size: 1.3rem; color: var(--accent-terracotta); margin-bottom: 16px;" data-bind-text="profile.role">
+                  Information Systems Student
+                </div>
+                <p class="text-body" style="font-size: 0.9rem;" data-bind-text="profile.aboutDossierDesc">
+                  Undergraduate student at <strong>ITB STIKOM Bali, Indonesia</strong>, combining structured information organization with graphic communication and workflow automation.
+                </p>
+              </div>
+
+              <div style="border-top: 1px solid var(--border-hairline); padding-top: 14px; margin-top: 18px; font-size: 0.84rem;">
+                <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border-hairline);">
+                  <span class="text-mono" style="color: var(--ink-muted);">INSTITUTION</span>
+                  <strong data-bind-text="profile.institution">ITB STIKOM Bali</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border-hairline);">
+                  <span class="text-mono" style="color: var(--ink-muted);">MAJOR</span>
+                  <strong data-bind-text="profile.program">Information Systems</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 0;">
+                  <span class="text-mono" style="color: var(--ink-muted);">LOCATION</span>
+                  <strong data-bind-text="profile.location">Bali, Indonesia</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 7 Columns: Narrative Statement & 5 Interests Matrix -->
+            <div class="col-7" style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="tpl-module-box">
+                <span class="text-mono" style="color: var(--accent-gold); margin-bottom: 6px;">POSITIONING STATEMENT</span>
+                <p style="font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.35; font-weight: 600;" data-bind-text="profile.positioningQuote">
+                  “Connecting the structural clarity of Information Systems with human-centered visual communication and practical N8N workflow automation.”
+                </p>
+              </div>
+
+              <div class="tpl-module-box" style="flex: 1;">
+                <div class="text-mono" style="color: var(--ink-muted); margin-bottom: 12px;">CORE PROFESSIONAL INTERESTS (5 PILLARS)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                  <div style="padding: 10px; background: var(--bg-ivory); border-left: 2px solid var(--accent-terracotta);">
+                    <div class="text-mono" style="font-size: 0.66rem; color: var(--accent-terracotta);">01 // VISUAL</div>
+                    <div style="font-weight: 600; font-size: 0.88rem;">Graphic Design &amp; Visual Communication</div>
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory); border-left: 2px solid var(--accent-terracotta);">
+                    <div class="text-mono" style="font-size: 0.66rem; color: var(--accent-terracotta);">02 // INTERFACE</div>
+                    <div style="font-weight: 600; font-size: 0.88rem;">UI/UX &amp; Interface Design</div>
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory); border-left: 2px solid var(--accent-gold);">
+                    <div class="text-mono" style="font-size: 0.66rem; color: #7D6435;">03 // MEDIA</div>
+                    <div style="font-weight: 600; font-size: 0.88rem;">Digital Content Creation</div>
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory); border-left: 2px solid var(--accent-gold);">
+                    <div class="text-mono" style="font-size: 0.66rem; color: #7D6435;">04 // KNOWLEDGE</div>
+                    <div style="font-weight: 600; font-size: 0.88rem;">Information Organization &amp; Docs</div>
+                  </div>
+                  <div style="grid-column: span 2; padding: 10px; background: var(--ink-charcoal); color: var(--bg-ivory); border-left: 3px solid var(--accent-terracotta);">
+                    <div class="text-mono" style="font-size: 0.66rem; color: var(--accent-gold);">05 // SYSTEMS</div>
+                    <div style="font-weight: 600; font-size: 0.88rem;">Automation &amp; No-Code Development (N8N Workflows)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 01 // 5:7 ASYMMETRIC SANGA MANDALA SPLIT</span>
+            <span>PAGE 01 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           TEMPLATE 02: SKILLS AND TOOLS
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-02">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 02 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: SKILLS AND TOOLS</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">FIKRI // TRANSPARENT CAPABILITY MATRIX</div>
+          </header>
+
+          <div class="tpl-grid-12">
+            <div class="col-12" style="margin-bottom: 4px;">
+              <span class="eyebrow">Capability &amp; Tool Stack</span>
+              <h2 class="heading-card" style="font-size: 2rem; margin-top: 4px;">
+                Honest Distinction Between <em>Established Skills</em> &amp; Active Learning
+              </h2>
+            </div>
+
+            <!-- Column 1: Confident / Core Workflow -->
+            <div class="col-4 tpl-module-box accent-border">
+              <div>
+                <span class="tag tag-terracotta" style="margin-bottom: 12px;">TIER I • ESTABLISHED</span>
+                <h3 class="heading-card" style="margin-bottom: 14px;">Core Daily Workflow</h3>
+
+                <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-hairline);">
+                  <div style="font-weight: 700;">Adobe Illustrator</div>
+                  <div class="text-body" style="font-size: 0.84rem;">Confident in visual design, vector graphics, and editorial layout.</div>
+                </div>
+
+                <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-hairline);">
+                  <div style="font-weight: 700;">Notion</div>
+                  <div class="text-body" style="font-size: 0.84rem;">Documentation, information organization, and workspace management.</div>
+                </div>
+
+                <div>
+                  <div style="font-weight: 700;">N8N</div>
+                  <div class="text-body" style="font-size: 0.84rem;">Workflow automation, webhooks, and multi-platform bot integration.</div>
+                </div>
+              </div>
+              <div class="text-mono" style="font-size: 0.68rem; color: var(--accent-terracotta); margin-top: 16px;">STATUS: PRODUCTION READY</div>
+            </div>
+
+            <!-- Column 2: Working Foundation -->
+            <div class="col-4 tpl-module-box gold-border">
+              <div>
+                <span class="tag tag-gold" style="margin-bottom: 12px;">TIER II • FOUNDATION</span>
+                <h3 class="heading-card" style="margin-bottom: 14px;">Media &amp; Web Basics</h3>
+
+                <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-hairline);">
+                  <div style="font-weight: 700;">DaVinci Resolve</div>
+                  <div class="text-body" style="font-size: 0.84rem;">Basic video editing and digital content production workflows.</div>
+                </div>
+
+                <div>
+                  <div style="font-weight: 700;">Basic Web Development</div>
+                  <div class="text-body" style="font-size: 0.84rem;">Static frontend structuring and deployment with assistance from AI tools.</div>
+                </div>
+              </div>
+              <div class="text-mono" style="font-size: 0.68rem; color: #7D6435; margin-top: 16px;">STATUS: FUNCTIONAL FOUNDATION</div>
+            </div>
+
+            <!-- Column 3: Currently Developing -->
+            <div class="col-4 tpl-module-box dark-box">
+              <div>
+                <span class="tag" style="background: rgba(182,154,98,0.2); color: var(--accent-gold); border-color: var(--accent-gold); margin-bottom: 12px;">TIER III • IN PROGRESS</span>
+                <h3 class="heading-card" style="color: var(--bg-ivory); margin-bottom: 14px;">Currently Developing</h3>
+
+                <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed rgba(184,177,166,0.25);">
+                  <div style="font-weight: 700; color: var(--accent-gold);">Figma</div>
+                  <div style="font-size: 0.84rem; color: var(--bg-ivory-subtle);">Currently developing skills in UI/UX layout and interface design.</div>
+                </div>
+
+                <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed rgba(184,177,166,0.25);">
+                  <div style="font-weight: 700; color: var(--accent-gold);">Adobe Photoshop</div>
+                  <div style="font-size: 0.84rem; color: var(--bg-ivory-subtle);">Currently developing skills in raster editing and compositing.</div>
+                </div>
+
+                <div>
+                  <div style="font-weight: 700; color: var(--accent-gold);">Adobe After Effects</div>
+                  <div style="font-size: 0.84rem; color: var(--bg-ivory-subtle);">Currently developing skills in motion graphics.</div>
+                </div>
+              </div>
+              <div class="text-mono" style="font-size: 0.68rem; color: var(--accent-gold); margin-top: 16px;">STATUS: ACTIVE SKILL EXPANSION</div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 02 // 4:4:4 TRI-COLUMN COMPETENCY ARCHITECTURE</span>
+            <span>PAGE 02 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           TEMPLATE 03: PROJECT SHOWCASE
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-03">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 03 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: PROJECT SHOWCASE</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">FIKRI // 4 SELECTED PROJECTS INDEX</div>
+          </header>
+
+          <div class="tpl-grid-12">
+            <!-- Project A -->
+            <div class="col-6 tpl-module-box accent-border">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="text-mono" style="color: var(--accent-terracotta);">PROJECT A // INTERNSHIP</span>
+                  <span class="tag">Gretiva Artha Group</span>
+                </div>
+                <h3 class="heading-card" style="margin-bottom: 8px;">Gretiva Bot</h3>
+                <p class="text-body" style="font-size: 0.86rem; margin-bottom: 12px;">
+                  Telegram-based automation bot featuring AI chat interaction, task management, asset/template management, broadcasts, and analytics automation.
+                </p>
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="tag">N8N</span>
+                <span class="tag">Telegram Bot API</span>
+                <span class="tag">Notion API</span>
+                <span class="tag">Meta IG Graph API</span>
+              </div>
+            </div>
+
+            <!-- Project B -->
+            <div class="col-6 tpl-module-box gold-border">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="text-mono" style="color: #7D6435;">PROJECT B // PERSONAL AUTOMATION</span>
+                  <span class="tag">Community System</span>
+                </div>
+                <h3 class="heading-card" style="margin-bottom: 8px;">Discord Automation Bot</h3>
+                <p class="text-body" style="font-size: 0.86rem; margin-bottom: 12px;">
+                  Personal automation system focused on Discord voice channel session monitoring, automated break reminders, and interactive bot workflows.
+                </p>
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="tag">N8N</span>
+                <span class="tag">Discord Integrations</span>
+                <span class="tag">Voice Session Monitor</span>
+              </div>
+            </div>
+
+            <!-- Project C -->
+            <div class="col-6 tpl-module-box">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="text-mono" style="color: var(--accent-terracotta);">PROJECT C // VISUAL DESIGN</span>
+                  <span class="tag">Creative Media</span>
+                </div>
+                <h3 class="heading-card" style="margin-bottom: 8px;">Digital Content &amp; Graphic Design</h3>
+                <p class="text-body" style="font-size: 0.86rem; margin-bottom: 12px;">
+                  Creation of educational social media carousels, promotional graphics, community visual materials, and structured information-based layouts.
+                </p>
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="tag">Adobe Illustrator</span>
+                <span class="tag">Social Carousels</span>
+                <span class="tag">Information Layout</span>
+              </div>
+            </div>
+
+            <!-- Project D -->
+            <div class="col-6 tpl-module-box">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="text-mono" style="color: var(--ink-muted);">PROJECT D // ACADEMIC</span>
+                  <span class="tag">ITB STIKOM Bali</span>
+                </div>
+                <h3 class="heading-card" style="margin-bottom: 8px;">Information Systems Projects</h3>
+                <p class="text-body" style="font-size: 0.86rem; margin-bottom: 12px;">
+                  Academic explorations in information organization, system analysis, workflow design, and structured digital solutions.
+                </p>
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="tag">System Analysis</span>
+                <span class="tag">Workflow Design</span>
+                <span class="tag">Notion Documentation</span>
+              </div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 03 // 2×2 SYMMETRIC COURTYARD SHOWCASE MATRIX</span>
+            <span>PAGE 03 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           TEMPLATE 04: PROJECT CASE STUDY (Demonstrated with Gretiva Bot)
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-04">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 04 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: PROJECT CASE STUDY</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">CASE 01 // GRETIVA BOT ARCHITECTURE</div>
+          </header>
+
+          <div class="tpl-grid-12">
+            <!-- Left 5 Cols: Metadata, Context, Role -->
+            <div class="col-5 tpl-module-box accent-border">
+              <div>
+                <span class="tag tag-terracotta" style="margin-bottom: 10px;">CASE STUDY SPECIMEN</span>
+                <h2 class="heading-card" style="font-size: 2rem; margin-bottom: 10px;">Gretiva Bot</h2>
+                <p class="text-body" style="font-size: 0.88rem; margin-bottom: 16px;">
+                  A Telegram-based automation bot developed during an internship at <strong>Gretiva Artha Group</strong>.
+                </p>
+
+                <div style="padding: 12px; background: var(--bg-ivory); border-left: 3px solid var(--ink-charcoal); margin-bottom: 16px;">
+                  <div class="text-mono" style="font-size: 0.68rem; color: var(--ink-muted);">ROLE &amp; CONTRIBUTION</div>
+                  <div style="font-size: 0.86rem; font-weight: 600; margin-top: 4px;">
+                    Contributed to the development of the bot's modules and automation workflows.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-mono" style="font-size: 0.7rem; color: var(--ink-muted); margin-bottom: 8px;">INTEGRATED TECHNOLOGIES</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <span class="tag">N8N</span>
+                  <span class="tag">Telegram Bot API</span>
+                  <span class="tag">Notion API</span>
+                  <span class="tag">Meta Instagram Graph API</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 7 Cols: System Diagram & Feature Modules -->
+            <div class="col-7" style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="tpl-module-box">
+                <div class="text-mono" style="color: var(--accent-terracotta); margin-bottom: 10px;">WORKFLOW TOPOLOGY // N8N INTEGRATION</div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem;">
+                  <div style="padding: 12px; border: 1px solid var(--ink-charcoal); background: var(--bg-ivory);">
+                    <strong>INPUT LAYER</strong><br/>Telegram Bot API Commands &amp; Queries
+                  </div>
+                  <div style="padding: 12px; background: var(--ink-charcoal); color: var(--bg-ivory);">
+                    <strong style="color: var(--accent-gold);">CORE ENGINE</strong><br/>N8N Automation Workflows
+                  </div>
+                  <div style="padding: 12px; border: 1px solid var(--accent-terracotta); background: var(--bg-ivory);">
+                    <strong>API SERVICES</strong><br/>Notion API &amp; Meta IG Graph API
+                  </div>
+                </div>
+              </div>
+
+              <div class="tpl-module-box" style="flex: 1;">
+                <div class="text-mono" style="color: var(--ink-muted); margin-bottom: 10px;">KEY FUNCTIONAL MODULES</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.84rem;">
+                  <div style="padding: 10px; background: var(--bg-ivory);">
+                    <strong>1. AI Chat Interaction:</strong> Conversational response workflows via Telegram.
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory);">
+                    <strong>2. Task Management:</strong> Structured workspace sync via Notion API.
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory);">
+                    <strong>3. Asset &amp; Templates:</strong> Instant access to creative templates &amp; assets.
+                  </div>
+                  <div style="padding: 10px; background: var(--bg-ivory);">
+                    <strong>4. Broadcast &amp; Analytics:</strong> Automated dispatches &amp; Meta IG Graph integration.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 04 // SINGLE CASE DEEP-DIVE ARCHITECTURE SHEET</span>
+            <span>PAGE 04 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           TEMPLATE 05: EXPERIENCE AND EDUCATION
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-05">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 05 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: EXPERIENCE AND EDUCATION</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">FIKRI // ACADEMIC &amp; PRACTICAL TIMELINE</div>
+          </header>
+
+          <div class="tpl-grid-12">
+            <!-- Left 6 Cols: Education -->
+            <div class="col-6 tpl-module-box accent-border">
+              <div>
+                <span class="eyebrow">Academic Background</span>
+                <h3 class="heading-card" style="font-size: 1.85rem; margin: 10px 0 6px;">ITB STIKOM Bali</h3>
+                <div class="text-mono" style="color: var(--accent-terracotta); margin-bottom: 16px;">
+                  INFORMATION SYSTEMS STUDENT • BALI, INDONESIA
+                </div>
+                <p class="text-body" style="font-size: 0.88rem; margin-bottom: 16px;">
+                  Pursuing undergraduate studies in Information Systems with academic project experience across:
+                </p>
+                <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; color: var(--ink-secondary);">
+                  <li>◆ Structured Information Organization &amp; Documentation</li>
+                  <li>◆ System Analysis &amp; Requirement Modeling</li>
+                  <li>◆ Operational &amp; Digital Workflow Design</li>
+                  <li>◆ Visual Communication for Technical Solutions</li>
+                </ul>
+              </div>
+              <div class="text-mono" style="font-size: 0.7rem; color: var(--ink-muted); margin-top: 16px;">
+                ACADEMIC FOUNDATION // SYSTEM THINKING
+              </div>
+            </div>
+
+            <!-- Right 6 Cols: Practical Experience -->
+            <div class="col-6" style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="tpl-module-box gold-border">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="text-mono" style="color: #7D6435;">INTERNSHIP EXPERIENCE</span>
+                  <span class="tag tag-gold">Automation &amp; Bots</span>
+                </div>
+                <h3 class="heading-card" style="font-size: 1.45rem; margin-bottom: 6px;">Gretiva Artha Group</h3>
+                <p class="text-body" style="font-size: 0.86rem;">
+                  Contributed to the development of <strong>Gretiva Bot</strong> modules and N8N automation workflows integrating Telegram Bot API, Notion API, and Meta Instagram Graph API.
+                </p>
+              </div>
+
+              <div class="tpl-module-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="text-mono" style="color: var(--accent-terracotta);">INDEPENDENT PRACTICE</span>
+                  <span class="tag">Design &amp; Community Systems</span>
+                </div>
+                <h3 class="heading-card" style="font-size: 1.45rem; margin-bottom: 6px;">Digital Content &amp; Discord Automation</h3>
+                <p class="text-body" style="font-size: 0.86rem;">
+                  Developing personal N8N + Discord voice session monitoring automations and designing educational social media carousels, promotional graphics, and community visual materials in Adobe Illustrator.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 05 // 6:6 ACADEMIC &amp; APPLIED EXPERIENCE LEDGER</span>
+            <span>PAGE 05 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           TEMPLATE 06: CONTACT INFORMATION
+           ==================================================================== -->
+      <article class="template-sheet" data-template-id="tpl-06">
+        <div class="template-master-frame patra-corners">
+          <header class="tpl-running-header">
+            <div class="tpl-header-left">
+              <span class="tpl-badge-num">TEMPLATE 06 / 06</span>
+              <span class="text-mono" style="font-weight: 600;">SECTION LAYOUT: CONTACT INFORMATION</span>
+            </div>
+            <div class="text-mono" style="color: var(--ink-muted);">FIKRI // BACK-MATTER COLOPHON</div>
+          </header>
+
+          <div class="tpl-grid-12" style="align-items: center;">
+            <div class="col-7">
+              <span class="eyebrow">Get In Touch</span>
+              <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 700; line-height: 1.05; margin: 12px 0 16px;">
+                Open for Collaboration in <em>Design</em>, Documentation, &amp; Automation.
+              </h2>
+              <p class="text-body" style="margin-bottom: 24px; max-width: 520px;">
+                Thank you for reviewing this portfolio. For inquiries regarding visual communication, Notion workspace organization, or N8N bot workflows, reach out through any channel below.
+              </p>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="tpl-module-box accent-border">
+                  <span class="text-mono" style="font-size: 0.68rem; color: var(--ink-muted);">OWNER &amp; AFFILIATION</span>
+                  <div style="font-weight: 700; margin-top: 4px;"><span data-bind-text="profile.fullName">Fikri</span> — <span data-bind-text="profile.program">Information Systems</span></div>
+                  <div style="font-size: 0.82rem; color: var(--ink-secondary);" data-bind-text="profile.institutionFull">ITB STIKOM Bali, Indonesia</div>
+                </div>
+                <div class="tpl-module-box gold-border">
+                  <span class="text-mono" style="font-size: 0.68rem; color: var(--ink-muted);">DIGITAL CHANNELS</span>
+                  <div id="tpl-dynamic-contact-channels" style="font-size: 0.82rem; color: var(--ink-secondary); margin-top: 4px;">
+                    <div><strong>Email:</strong> fikri.stikombali@gmail.com</div>
+                    <div><strong>GitHub:</strong> github.com/fikxz</div>
+                    <div><strong>Discord:</strong> @fikxz</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-5 tpl-module-box" style="align-items: center; text-align: center;">
+              <img src="assets/svg/candi-mandala-emblem.svg" alt="Balinese Architectural Colophon Seal" style="max-width: 240px; margin: 0 auto 12px;" />
+              <div class="text-mono" style="font-size: 0.7rem; color: var(--accent-terracotta);">
+                MODERN BALINESE DIGITAL AESTHETIC
+              </div>
+              <div style="font-size: 0.78rem; color: var(--ink-muted); margin-top: 4px;">
+                Tri Angga • Sanga Mandala • Patra Vector System
+              </div>
+            </div>
+          </div>
+
+          <footer class="tpl-running-footer">
+            <span>REUSABLE TEMPLATE 06 // CLOSING COLOPHON &amp; CONTACT DIRECTORY</span>
+            <span>PAGE 06 ◆ MODERN BALINESE IDENTITY</span>
+          </footer>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

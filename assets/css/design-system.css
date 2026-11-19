@@ -1,0 +1,608 @@
+/* ==========================================================================
+   DESIGN SYSTEM: MODERN BALINESE DIGITAL AESTHETIC
+   Owner: Fikri — Information Systems Student, ITB STIKOM Bali
+   Philosophy: Tri Angga Hierarchy, Sanga Mandala Grid, Patra Vector Line Art,
+               and Kamasan Natural Pigment Palette
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* 1. COLOR PALETTE — Kamasan & Balinese Architectural Materiality */
+  --bg-ivory: #F4F0E8;          /* Kain Belacu / Unbleached Cotton & Limestone */
+  --bg-ivory-elevated: #FAF8F3; /* Lighter Paper Surface */
+  --bg-ivory-subtle: #EAE4D8;   /* Secondary Surface / Recessed Courtyard */
+  
+  --ink-charcoal: #252525;      /* Mangsi / Traditional Soot Ink */
+  --ink-secondary: #4A4742;     /* Weathered Basalt / Body Copy */
+  --ink-muted: #787269;         /* Muted Stone Caption */
+  
+  --accent-terracotta: #A65D43; /* Bata Merah / Balinese Temple Brick */
+  --accent-terracotta-soft: rgba(166, 93, 67, 0.1);
+  --accent-terracotta-dark: #874730;
+  
+  --accent-gold: #B69A62;       /* Prada / Muted Gold Leaf Accent */
+  --accent-gold-soft: rgba(182, 154, 98, 0.14);
+  
+  --neutral-warm-gray: #B8B1A6; /* Batu Padas / Volcanic Sandstone Hairlines */
+  --border-hairline: #D5CFC4;   /* Structural Grid Line */
+  --border-strong: #252525;     /* Primary Architectural Frame */
+
+  /* 2. TYPOGRAPHY SYSTEM */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* 3. SPACING & LAYOUT TOKENS (Sanga Mandala Proportion System) */
+  --container-max: 1280px;
+  --grid-gap: 24px;
+  --radius-sharp: 2px;
+  --radius-card: 4px;
+  --transition-base: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Dark / Charcoal Inverse Surface Token Set */
+.surface-charcoal {
+  background-color: var(--ink-charcoal);
+  color: var(--bg-ivory);
+}
+
+/* ==========================================================================
+   BASE RESET & EDITORIAL FOUNDATIONS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-ivory);
+  color: var(--ink-charcoal);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-ivory);
+  color: var(--ink-charcoal);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Subtle woven textile / paper grain texture via CSS radial pattern */
+  background-image: radial-gradient(rgba(37, 37, 37, 0.035) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ==========================================================================
+   TYPOGRAPHIC HIERARCHY
+   ========================================================================== */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-terracotta);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1.5px;
+  background-color: var(--accent-terracotta);
+}
+
+.heading-display {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink-charcoal);
+}
+
+.heading-display em,
+.heading-section em,
+.heading-card em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent-terracotta);
+}
+
+.heading-section {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.heading-card {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.65rem;
+  line-height: 1.22;
+}
+
+.text-lead {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--ink-secondary);
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: var(--ink-secondary);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL CONTAINERS & SANGA MANDALA GRID
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.section-frame {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--border-hairline);
+  position: relative;
+}
+
+.section-header-grid {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  gap: 32px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 8px;
+  border-top: 1px solid var(--neutral-warm-gray);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   GLOBAL DELIVERABLES SUITE BAR & NAVIGATION
+   ========================================================================== */
+.suite-topbar {
+  background-color: var(--ink-charcoal);
+  color: var(--bg-ivory);
+  border-bottom: 1px solid rgba(184, 177, 166, 0.25);
+  font-size: 0.78rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.suite-topbar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.suite-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.73rem;
+  color: var(--neutral-warm-gray);
+}
+
+.suite-brand strong {
+  color: var(--bg-ivory);
+  font-weight: 500;
+}
+
+.suite-deliverables-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.suite-pill {
+  padding: 5px 12px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--neutral-warm-gray);
+  border: 1px solid rgba(184, 177, 166, 0.22);
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.suite-pill:hover {
+  color: var(--bg-ivory);
+  border-color: var(--accent-gold);
+  background-color: rgba(182, 154, 98, 0.12);
+}
+
+.suite-pill.active {
+  background-color: var(--accent-terracotta);
+  color: var(--bg-ivory);
+  border-color: var(--accent-terracotta);
+  font-weight: 500;
+}
+
+.suite-pill .code {
+  opacity: 0.75;
+  font-size: 0.68rem;
+}
+
+/* Primary Sub-Navigation for Website */
+.site-navbar {
+  background-color: rgba(244, 240, 232, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.site-navbar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-monogram {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--ink-charcoal);
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-color: var(--bg-ivory-elevated);
+}
+
+.brand-monogram::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--accent-gold);
+  pointer-events: none;
+}
+
+.brand-text-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.brand-text-sub {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--accent-terracotta);
+  transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+  color: var(--ink-charcoal);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   BALINESE ARCHITECTURAL & PATRA ORNAMENTAL MOTIFS
+   ========================================================================== */
+
+/* Stepped Candi Bentar Card Frame */
+.balinese-card {
+  background-color: var(--bg-ivory-elevated);
+  border: 1px solid var(--border-hairline);
+  position: relative;
+  padding: 28px;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.balinese-card:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 30px -15px rgba(37, 37, 37, 0.08);
+}
+
+/* Corner Patra Geometrics (Subtle L-Bracket with Muted Gold node) */
+.patra-corners {
+  position: relative;
+}
+
+.patra-corners::before,
+.patra-corners::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent-gold);
+  border-style: solid;
+  pointer-events: none;
+  transition: width var(--transition-base), height var(--transition-base);
+}
+
+.patra-corners::before {
+  top: 8px;
+  left: 8px;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.patra-corners::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* Ornamental Section Divider */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+  color: var(--accent-gold);
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-hairline);
+}
+
+/* ==========================================================================
+   BUTTONS & INTERACTIVE CONTROLS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 22px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--ink-charcoal);
+  color: var(--bg-ivory);
+  border-color: var(--ink-charcoal);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+}
+
+.btn-terracotta {
+  background-color: var(--accent-terracotta);
+  color: var(--bg-ivory);
+  border-color: var(--accent-terracotta);
+}
+
+.btn-terracotta:hover {
+  background-color: var(--accent-terracotta-dark);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--ink-charcoal);
+  border-color: var(--ink-charcoal);
+}
+
+.btn-outline:hover {
+  background-color: var(--ink-charcoal);
+  color: var(--bg-ivory);
+}
+
+.btn-subtle {
+  background-color: var(--bg-ivory-subtle);
+  color: var(--ink-charcoal);
+  border-color: var(--border-hairline);
+  font-size: 0.8rem;
+  padding: 8px 14px;
+}
+
+.btn-subtle:hover {
+  border-color: var(--accent-terracotta);
+  color: var(--accent-terracotta);
+}
+
+/* Badges & Tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-ivory);
+  color: var(--ink-secondary);
+  border-radius: 2px;
+}
+
+.tag-terracotta {
+  background-color: var(--accent-terracotta-soft);
+  border-color: rgba(166, 93, 67, 0.35);
+  color: var(--accent-terracotta);
+  font-weight: 500;
+}
+
+.tag-gold {
+  background-color: var(--accent-gold-soft);
+  border-color: rgba(182, 154, 98, 0.45);
+  color: #7D6435;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   FOOTER COLOPHON
+   ========================================================================== */
+.site-footer {
+  background-color: var(--ink-charcoal);
+  color: var(--bg-ivory);
+  padding: 64px 0 36px;
+  border-top: 3px solid var(--accent-terracotta);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 5fr 3fr 4fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(184, 177, 166, 0.2);
+}
+
+.footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--neutral-warm-gray);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .section-header-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+  .section-frame {
+    padding: 56px 0;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .suite-topbar-inner {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   PRINT MEDIA RULES (For PDF Export of Cover, Templates, and Infographic)
+   ========================================================================== */
+@media print {
+  .suite-topbar,
+  .site-navbar,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #F4F0E8 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deliverable C: Digital Infographic — From Information Systems to Creative Digital Solutions</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <style>
+    .infographic-stage {
+      padding: 40px 0 88px;
+    }
+
+    .infographic-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 18px 24px;
+      background-color: var(--bg-ivory-elevated);
+      border: 1px solid var(--border-hairline);
+      margin-bottom: 36px;
+    }
+
+    /* Editorial Poster Sheet */
+    .poster-sheet {
+      max-width: 1020px;
+      margin: 0 auto;
+      background-color: var(--bg-ivory-elevated);
+      border: 2.5px solid var(--ink-charcoal);
+      padding: 22px;
+      box-shadow: 0 26px 65px -20px rgba(37, 37, 37, 0.16);
+    }
+
+    .poster-inner {
+      border: 1px solid var(--neutral-warm-gray);
+      background-color: var(--bg-ivory);
+      padding: 44px 48px;
+      position: relative;
+    }
+
+    .poster-header {
+      text-align: center;
+      border-bottom: 1.5px solid var(--ink-charcoal);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+    }
+
+    .poster-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .poster-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.3rem, 4.2vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.06;
+      max-width: 780px;
+      margin: 12px auto 16px;
+      color: var(--ink-charcoal);
+    }
+
+    .poster-title em {
+      color: var(--accent-terracotta);
+      font-style: italic;
+    }
+
+    /* 4 Pillars Matrix inside Infographic */
+    .pillars-4-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin: 32px 0;
+    }
+
+    .infographic-pillar-card {
+      background-color: var(--bg-ivory-elevated);
+      border: 1px solid var(--ink-charcoal);
+      padding: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pillar-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .pillar-icon-box {
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--ink-charcoal);
+      background-color: var(--bg-ivory);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .pillar-flow-strip {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    /* Bottom Applied Pipeline Section */
+    .pipeline-bar {
+      background-color: var(--ink-charcoal);
+      color: var(--bg-ivory);
+      padding: 28px;
+      border: 1px solid var(--ink-charcoal);
+      margin-top: 28px;
+    }
+
+    .pipeline-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .pipeline-step {
+      background-color: rgba(244, 240, 232, 0.06);
+      border: 1px solid rgba(182, 154, 98, 0.35);
+      padding: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .poster-inner { padding: 24px 20px; }
+      .pillars-4-grid,
+      .pipeline-steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .infographic-stage { padding: 0; }
+      .poster-sheet {
+        box-shadow: none;
+        border-width: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL DELIVERABLES SUITE BAR -->
+  <div class="suite-topbar">
+    <div class="suite-topbar-inner">
+      <div class="suite-brand">
+        <span>◆</span>
+        <strong>FIKRI // PORTFOLIO SUITE</strong>
+        <span>— Deliverable C: Digital Infographic</span>
+      </div>
+      <nav class="suite-deliverables-nav" aria-label="Portfolio Deliverables Navigation">
+        <a href="cover.html" class="suite-pill">
+          <span class="code">[A]</span> Portfolio Cover
+        </a>
+        <a href="templates.html" class="suite-pill">
+          <span class="code">[B]</span> 6 Page Templates
+        </a>
+        <a href="infographic.html" class="suite-pill active">
+          <span class="code">[C]</span> Digital Infographic
+        </a>
+        <a href="index.html" class="suite-pill">
+          <span class="code">[D]</span> Portfolio Website
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="infographic-stage">
+    <div class="container">
+
+      <!-- Toolbar (Hidden on Print) -->
+      <div class="infographic-toolbar no-print">
+        <div>
+          <span class="eyebrow">Deliverable C // Digital Infographic</span>
+          <h1 class="heading-card" style="margin-top: 4px;">“From Information Systems to Creative Digital Solutions”</h1>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="assets/svg/infographic-synthesis.svg" download class="btn btn-subtle">Download Diagram (.SVG)</a>
+          <button onclick="window.print()" class="btn btn-primary">Print / Save Infographic Poster as PDF</button>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           EDITORIAL INFOGRAPHIC POSTER SHEET
+           ==================================================================== -->
+      <article class="poster-sheet" aria-label="Digital Infographic Poster">
+        <div class="poster-inner patra-corners">
+
+          <!-- 1. UTAMA: HEADER & THESIS -->
+          <header class="poster-header">
+            <div class="poster-meta-top">
+              <span>INFOGRAPHIC MONOGRAPH // FIG. 03</span>
+              <span>MODERN BALINESE DIGITAL AESTHETIC</span>
+              <span>FIKRI • ITB STIKOM BALI</span>
+            </div>
+
+            <span class="eyebrow">Conceptual Synthesis &amp; Discipline Map</span>
+            <h2 class="poster-title">
+              From Information Systems to <em>Creative Digital Solutions</em>
+            </h2>
+            <p class="text-body" style="max-width: 680px; margin: 0 auto;">
+              How structured <strong>Information Systems</strong> thinking, <strong>Visual Communication</strong> clarity, and no-code <strong>Digital Automation</strong> converge to produce practical <strong>Creative Problem Solving</strong>.
+            </p>
+          </header>
+
+          <!-- 2. CENTRAL CONVERGENCE DIAGRAM (SVG) -->
+          <section aria-label="Convergence Architecture Visualization">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span class="text-mono" style="color: var(--accent-terracotta); font-weight: 600;">PART I // DISCIPLINARY CONVERGENCE ARCHITECTURE</span>
+              <span class="text-mono" style="color: var(--ink-muted);">PADMA MANDALA SYNTHESIS NODE</span>
+            </div>
+
+            <div style="border: 1px solid var(--border-hairline); background-color: var(--bg-ivory-elevated); padding: 12px;">
+              <img src="assets/svg/infographic-synthesis.svg" alt="Diagram connecting Information Systems, Visual Communication, and Digital Automation into Creative Problem Solving" />
+            </div>
+          </section>
+
+          <!-- Balinese Patra Ornamental Divider -->
+          <div style="margin: 28px auto; max-width: 320px;">
+            <img src="assets/svg/patra-ornament.svg" alt="Patra Punggel Geometric Divider" />
+          </div>
+
+          <!-- 3. MADYA: THE 4 INTERLOCKING PILLARS -->
+          <section aria-label="The Four Core Pillars">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span class="text-mono" style="color: var(--accent-terracotta); font-weight: 600;">PART II // THE FOUR INTERLOCKING PILLARS</span>
+              <span class="text-mono" style="color: var(--ink-muted);">SANGA MANDALA 2×2 QUADRANT</span>
+            </div>
+
+            <div class="pillars-4-grid">
+              <!-- PILLAR 1: INFORMATION SYSTEMS -->
+              <div class="infographic-pillar-card" style="border-top: 4px solid var(--ink-charcoal);">
+                <div>
+                  <div class="pillar-card-head">
+                    <div>
+                      <span class="text-mono" style="color: var(--ink-muted);">01 // FOUNDATION</span>
+                      <h3 class="heading-card" style="font-size: 1.55rem; margin-top: 2px;">Information Systems</h3>
+                    </div>
+                    <div class="pillar-icon-box" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#252525" stroke-width="1.75">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                        <line x1="10" y1="6.5" x2="14" y2="6.5"/>
+                        <line x1="6.5" y1="10" x2="6.5" y2="14"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-body" style="font-size: 0.9rem;">
+                    Provides the <strong>analytical backbone</strong>: organizing unstructured data, analyzing system requirements, mapping workflows, and structuring documentation in <strong>Notion</strong> before any visual or automated tool is built.
+                  </p>
+                </div>
+                <div class="pillar-flow-strip">
+                  <span style="color: var(--ink-muted);">INPUT: Raw Processes &amp; Data</span>
+                  <span style="color: var(--ink-charcoal); font-weight: 600;">→ Structured Schema</span>
+                </div>
+              </div>
+
+              <!-- PILLAR 2: VISUAL COMMUNICATION -->
+              <div class="infographic-pillar-card" style="border-top: 4px solid var(--accent-terracotta);">
+                <div>
+                  <div class="pillar-card-head">
+                    <div>
+                      <span class="text-mono" style="color: var(--accent-terracotta);">02 // EXPRESSION</span>
+                      <h3 class="heading-card" style="font-size: 1.55rem; margin-top: 2px;">Visual Communication</h3>
+                    </div>
+                    <div class="pillar-icon-box" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A65D43" stroke-width="1.75">
+                        <circle cx="12" cy="12" r="9"/>
+                        <polygon points="12,5 19,12 12,19 5,12"/>
+                        <circle cx="12" cy="12" r="2"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-body" style="font-size: 0.9rem;">
+                    Translates complex system logic into <strong>human-readable clarity</strong>: using <strong>Adobe Illustrator</strong>, typographic hierarchy, UI/UX layout structure, and local cultural aesthetics so information is intuitive and engaging.
+                  </p>
+                </div>
+                <div class="pillar-flow-strip">
+                  <span style="color: var(--ink-muted);">INPUT: Complex Information</span>
+                  <span style="color: var(--accent-terracotta); font-weight: 600;">→ Clear Visual Layout</span>
+                </div>
+              </div>
+
+              <!-- PILLAR 3: DIGITAL AUTOMATION -->
+              <div class="infographic-pillar-card" style="border-top: 4px solid var(--accent-gold);">
+                <div>
+                  <div class="pillar-card-head">
+                    <div>
+                      <span class="text-mono" style="color: #7D6435;">03 // EXECUTION</span>
+                      <h3 class="heading-card" style="font-size: 1.55rem; margin-top: 2px;">Digital Automation</h3>
+                    </div>
+                    <div class="pillar-icon-box" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B69A62" stroke-width="1.75">
+                        <path d="M4 6h6v5H4zM14 13h6v5h-6z"/>
+                        <path d="M10 8.5h4v7h0"/>
+                        <circle cx="14" cy="8.5" r="1.5" fill="#B69A62"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-body" style="font-size: 0.9rem;">
+                    Powers <strong>operational efficiency</strong>: using <strong>N8N</strong> no-code workflows to connect APIs (Telegram, Discord, Notion, Instagram Graph), eliminating repetitive manual tasks and running 24/7 bot triggers.
+                  </p>
+                </div>
+                <div class="pillar-flow-strip">
+                  <span style="color: var(--ink-muted);">INPUT: Manual Workflows</span>
+                  <span style="color: #7D6435; font-weight: 600;">→ Automated N8N Pipeline</span>
+                </div>
+              </div>
+
+              <!-- PILLAR 4: CREATIVE PROBLEM SOLVING -->
+              <div class="infographic-pillar-card" style="background-color: var(--ink-charcoal); color: var(--bg-ivory); border-top: 4px solid var(--accent-terracotta);">
+                <div>
+                  <div class="pillar-card-head" style="border-bottom-color: rgba(184,177,166,0.2);">
+                    <div>
+                      <span class="text-mono" style="color: var(--accent-gold);">04 // THE CONVERGENCE</span>
+                      <h3 class="heading-card" style="font-size: 1.55rem; margin-top: 2px; color: var(--bg-ivory);">Creative Problem Solving</h3>
+                    </div>
+                    <div class="pillar-icon-box" style="background-color: var(--accent-terracotta); border-color: var(--accent-gold);" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4F0E8" stroke-width="1.75">
+                        <polygon points="12,2 22,12 12,22 2,12"/>
+                        <circle cx="12" cy="12" r="3.5"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-body" style="font-size: 0.9rem; color: var(--bg-ivory-subtle);">
+                    The synthesis of all three pillars: crafting digital solutions—like <strong>Gretiva Bot</strong>, <strong>Discord Voice Break Reminders</strong>, and <strong>Educational Visual Carousels</strong>—that are logically structured, visually clear, and automated.
+                  </p>
+                </div>
+                <div class="pillar-flow-strip" style="border-top-color: rgba(184,177,166,0.25);">
+                  <span style="color: var(--neutral-warm-gray);">SYNTHESIS: IS + Design + N8N</span>
+                  <span style="color: var(--accent-gold); font-weight: 600;">→ Applied Solution</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. NISTA: REAL-WORLD APPLIED WORKFLOW PIPELINE -->
+          <section class="pipeline-bar" aria-label="Applied Portfolio Pipeline">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <span class="text-mono" style="color: var(--accent-gold);">PART III // APPLIED PORTFOLIO PROOF — END-TO-END WORKFLOW</span>
+              <span class="text-mono" style="color: var(--neutral-warm-gray); font-size: 0.7rem;">FROM CONCEPT TO DEPLOYMENT</span>
+            </div>
+
+            <div class="pipeline-steps-grid">
+              <div class="pipeline-step">
+                <div class="text-mono" style="color: var(--accent-gold); font-size: 0.68rem;">STEP 01 // ANALYZE</div>
+                <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 4px 0;">Map &amp; Organize</div>
+                <p style="font-size: 0.78rem; color: var(--neutral-warm-gray);">
+                  Analyze workflow bottlenecks and structure databases in <strong>Notion</strong> (Information Systems).
+                </p>
+              </div>
+
+              <div class="pipeline-step">
+                <div class="text-mono" style="color: var(--accent-gold); font-size: 0.68rem;">STEP 02 // DESIGN</div>
+                <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 4px 0;">Visualize &amp; Layout</div>
+                <p style="font-size: 0.78rem; color: var(--neutral-warm-gray);">
+                  Craft clear visual templates, assets, and interfaces using <strong>Adobe Illustrator</strong> (Visual Comm).
+                </p>
+              </div>
+
+              <div class="pipeline-step">
+                <div class="text-mono" style="color: var(--accent-gold); font-size: 0.68rem;">STEP 03 // AUTOMATE</div>
+                <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 4px 0;">Connect APIs</div>
+                <p style="font-size: 0.78rem; color: var(--neutral-warm-gray);">
+                  Build automated bot logic in <strong>N8N</strong> linking Telegram, Discord, Notion &amp; Instagram.
+                </p>
+              </div>
+
+              <div class="pipeline-step" style="background-color: var(--accent-terracotta); border-color: var(--accent-gold);">
+                <div class="text-mono" style="color: var(--bg-ivory); font-size: 0.68rem;">STEP 04 // DELIVER</div>
+                <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 4px 0;">Creative Solution</div>
+                <p style="font-size: 0.78rem; color: var(--bg-ivory);">
+                  Deploy working systems: <strong>Gretiva Bot</strong>, <strong>Discord Break Bot</strong> &amp; <strong>Visual Media</strong>.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Poster Footer Colophon -->
+          <footer style="margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-muted);">
+            <span>DESIGNED BY <span data-bind-text="profile.name">FIKRI</span> — <span data-bind-text="profile.role">INFORMATION SYSTEMS STUDENT</span>, <span data-bind-text="profile.institution">ITB STIKOM BALI</span></span>
+            <span>DELIVERABLE C // DIGITAL INFOGRAPHIC</span>
+          </footer>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

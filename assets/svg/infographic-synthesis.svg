@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" fill="none">
+  <title>From Information Systems to Creative Digital Solutions — Convergence Diagram</title>
+  <desc>Infographic vector diagram illustrating how Information Systems, Visual Communication, and Digital Automation converge into Creative Problem Solving.</desc>
+
+  <!-- Background Frame -->
+  <rect x="4" y="4" width="892" height="432" fill="#FAF8F3" stroke="#D5CFC4" stroke-width="1.5"/>
+  
+  <!-- Subtle Sanga Mandala Grid Lines -->
+  <line x1="450" y1="20" x2="450" y2="420" stroke="#EAE4D8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="20" y1="220" x2="880" y2="220" stroke="#EAE4D8" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- Patra Corner Brackets -->
+  <path d="M18 46 L18 18 L46 18" stroke="#B69A62" stroke-width="2"/>
+  <path d="M882 46 L882 18 L854 18" stroke="#B69A62" stroke-width="2"/>
+  <path d="M18 394 L18 422 L46 422" stroke="#B69A62" stroke-width="2"/>
+  <path d="M882 394 L882 422 L854 422" stroke="#B69A62" stroke-width="2"/>
+
+  <!-- Connecting Pipeline Paths from Pillars 1, 2, 3 into Center Hub (Pillar 4) -->
+  <!-- Pillar 1 (Top-Left) to Center -->
+  <path d="M270 115 L360 115 L410 185" stroke="#252525" stroke-width="2"/>
+  <circle cx="360" cy="115" r="4" fill="#252525"/>
+  
+  <!-- Pillar 2 (Bottom-Left) to Center -->
+  <path d="M270 325 L360 325 L410 255" stroke="#A65D43" stroke-width="2"/>
+  <circle cx="360" cy="325" r="4" fill="#A65D43"/>
+
+  <!-- Pillar 3 (Right-Top/Mid) to Center -->
+  <path d="M630 115 L540 115 L490 185" stroke="#B69A62" stroke-width="2"/>
+  <circle cx="540" cy="115" r="4" fill="#B69A62"/>
+
+  <!-- Center Output to Pillar 4 (Bottom-Right Output Module) -->
+  <path d="M490 255 L540 325 L630 325" stroke="#A65D43" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <polygon points="626,320 636,325 626,330" fill="#A65D43"/>
+
+  <!-- NODE 01: INFORMATION SYSTEMS (Top-Left) -->
+  <g transform="translate(40, 55)">
+    <rect x="0" y="0" width="230" height="120" fill="#F4F0E8" stroke="#252525" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="26" fill="#252525"/>
+    <text x="12" y="17" fill="#F4F0E8" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="1.5">01 // INFORMATION SYSTEMS</text>
+    <text x="14" y="52" fill="#252525" font-family="Georgia, serif" font-size="16" font-weight="bold">Structured Logic &amp; Data</text>
+    <text x="14" y="74" fill="#4A4742" font-family="sans-serif" font-size="11.5">• System Analysis &amp; Architecture</text>
+    <text x="14" y="92" fill="#4A4742" font-family="sans-serif" font-size="11.5">• Notion Knowledge Documentation</text>
+    <text x="14" y="110" fill="#787269" font-family="monospace" font-size="10">ROLE: Structural Backbone</text>
+  </g>
+
+  <!-- NODE 02: VISUAL COMMUNICATION (Bottom-Left) -->
+  <g transform="translate(40, 265)">
+    <rect x="0" y="0" width="230" height="120" fill="#F4F0E8" stroke="#A65D43" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="26" fill="#A65D43"/>
+    <text x="12" y="17" fill="#F4F0E8" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="1.5">02 // VISUAL COMMUNICATION</text>
+    <text x="14" y="52" fill="#252525" font-family="Georgia, serif" font-size="16" font-weight="bold">Clarity &amp; Cultural Identity</text>
+    <text x="14" y="74" fill="#4A4742" font-family="sans-serif" font-size="11.5">• Graphic Layout (Illustrator)</text>
+    <text x="14" y="92" fill="#4A4742" font-family="sans-serif" font-size="11.5">• UI/UX Hierarchy &amp; Content Design</text>
+    <text x="14" y="110" fill="#A65D43" font-family="monospace" font-size="10">ROLE: Human-Centered Interface</text>
+  </g>
+
+  <!-- NODE 03: DIGITAL AUTOMATION (Top-Right) -->
+  <g transform="translate(630, 55)">
+    <rect x="0" y="0" width="230" height="120" fill="#F4F0E8" stroke="#B69A62" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="26" fill="#B69A62"/>
+    <text x="12" y="17" fill="#252525" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="1.5">03 // DIGITAL AUTOMATION</text>
+    <text x="14" y="52" fill="#252525" font-family="Georgia, serif" font-size="16" font-weight="bold">No-Code Workflow Engine</text>
+    <text x="14" y="74" fill="#4A4742" font-family="sans-serif" font-size="11.5">• N8N Multi-API Orchestration</text>
+    <text x="14" y="92" fill="#4A4742" font-family="sans-serif" font-size="11.5">• Telegram, Discord &amp; Notion Bots</text>
+    <text x="14" y="110" fill="#7D6435" font-family="monospace" font-size="10">ROLE: Operational Execution</text>
+  </g>
+
+  <!-- NODE 04: CREATIVE PROBLEM SOLVING (Bottom-Right Result) -->
+  <g transform="translate(630, 265)">
+    <rect x="0" y="0" width="230" height="120" fill="#252525" stroke="#252525" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="26" fill="#A65D43"/>
+    <text x="12" y="17" fill="#F4F0E8" font-family="monospace" font-size="10.5" font-weight="bold" letter-spacing="1.2">04 // CREATIVE PROBLEM SOLVING</text>
+    <text x="14" y="52" fill="#F4F0E8" font-family="Georgia, serif" font-size="16" font-weight="bold">Applied Digital Solutions</text>
+    <text x="14" y="74" fill="#EAE4D8" font-family="sans-serif" font-size="11.5">• Functional + Visually Coherent</text>
+    <text x="14" y="92" fill="#EAE4D8" font-family="sans-serif" font-size="11.5">• Automated &amp; Well-Documented</text>
+    <text x="14" y="110" fill="#B69A62" font-family="monospace" font-size="10">OUTPUT: Holistic Impact</text>
+  </g>
+
+  <!-- CENTER CONVERGENCE HUB (Balinese Padma Mandala Core) -->
+  <g transform="translate(450, 220)">
+    <circle cx="0" cy="0" r="76" fill="#F4F0E8" stroke="#B69A62" stroke-width="1.5"/>
+    <polygon points="0,-68 68,0 0,68 -68,0" fill="#FAF8F3" stroke="#252525" stroke-width="1.5"/>
+    <polygon points="0,-52 52,0 0,52 -52,0" fill="none" stroke="#A65D43" stroke-width="1.25"/>
+    <circle cx="0" cy="0" r="34" fill="#252525"/>
+    <text x="0" y="-4" text-anchor="middle" fill="#B69A62" font-family="monospace" font-size="9" letter-spacing="1.5">SYNTHESIS</text>
+    <text x="0" y="11" text-anchor="middle" fill="#F4F0E8" font-family="Georgia, serif" font-size="12" font-weight="bold">IS × DESIGN</text>
+  </g>
+</svg>
